@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="well">
+        <form name="createTripForm" class="form-horizontal">
+            <fieldset>
+                <legend>Create New Trip</legend>
+                <div class="form-group">
+                    <label for="from" class="col-md-2 control-label">From</label>
+                    <div class="col-md-10">
+                        <select id="from" class="form-control" ng-model="trip.from">
+                            <option ng-repeat="city in cities" ng-value="city">{{city}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="to" class="col-md-2 control-label">To</label>
+                    <div class="col-md-10">
+                        <select id="to" class="form-control" ng-model="trip.to">
+                            <option ng-repeat="city in cities" ng-value="city">{{city}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="availableSeats" class="col-md-2 control-label">Available Seats</label>
+                    <div class="col-md-10">
+                        <input id="availableSeats" type="number" value="1" min="1" ng-model="trip.availableSeats" required="required" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="departureTime" ng-regexp='/(?:(\d{4})([\-\/.])([0-3]?\d)\2([0-3]?\d)|([0-3]?\d)([\-\/.])([0-3]?\d)\6(\d{4}))(?:\s+([012]?\d)([:hap])([0-5]\d))?/i' class="col-md-2 text-right">Departure Time</label>
+                    <div class="col-md-10">
+                        <input id="departureTime" type="text" ng-model="trip.departureTime" class="form-control" required="required"/>
+                    </div>
+                </div>
+                <br/>
+                <div class="pull-right">
+                    <button ng-click="createTrip(trip)" ng-disabled="createTripForm.$invalid" class="btn btn-primary">
+                        Create
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

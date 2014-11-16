@@ -1,0 +1,14 @@
+<table class="table table-striped text-center trips">
+    <tr>
+        <th>Driver</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure time</th>
+    </tr>
+    <tr ng-repeat="trip in trips | orderBy: sort">
+        <td><a ng-href="/#/trips/{{trip.id}}">{{trip.driverName}}</a></td>
+        <td>{{trip.from}}</td>
+        <td>{{trip.to}}</td>
+        <td><a href="#">{{trip.departureDate}}</a></td>
+    </tr>
+</table>

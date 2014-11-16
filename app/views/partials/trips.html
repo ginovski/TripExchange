@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="pull-right">Trips</h2>
+        </div>
+        <div class="col-md-6" ng-show="userInfo.isDriver">
+            <a href='/#/trips/create' class="btn btn-primary pull-right">Create</a>
+        </div>
+    </div>
+    <div class="row text-center" ng-show="isAuthenticated">
+        <div class="col-md-3">
+            <p>Sort</p>
+            <select class="form-control" ng-model="filterObj.sort" ng-init="sort='date'">
+                <option value="date">Date</option>
+                <option value="driver">Driver</option>
+                <option value="seats">Seats</option>
+                <option value="from">From City</option>
+                <option value="to">To City</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <p>Order</p>
+            <select class="form-control" ng-model="filterObj.sortType" ng-init="sortType='asc'">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <p>From</p>
+            <select class="form-control" ng-model="filterObj.from" ng-init="from='Aheloy'">
+                <option ng-repeat="city in cities" ng-value="city">{{city}}</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <p>To</p>
+            <select class="form-control" ng-model="filterObj.to" ng-init="to='Aheloy'">
+                <option ng-repeat="city in cities" ng-value="city">{{city}}</option>
+            </select>
+        </div>
+    </div>
+    <br/>
+    <div class="row" ng-show="isAuthenticated">
+        <div class="col-md-2">
+            <input type="checkbox" ng-model="filterObj.finished"/> Include Finished<br/>
+            <input type="checkbox" ng-model="filterObj.onlyMine"/> Only Mine
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary" ng-click="filter(filterObj)">Filter</button>
+        </div>
+        <div class="col-md-3 col-md-push-5">
+            <div class="form-group form-inline">
+                <button class="btn btn-primary" style="margin-right: 10px" ng-click="decreasePage()">&lt;&lt;</button><input type="text" class="form-control" ng-model="page" style="width: 25%" value="page"/><button class="btn btn-primary" style="margin-left: 10px" ng-click="increasePage()">&gt;&gt;</button>
+            </div>
+        </div>
+    </div>
+    <div trips></div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>{{driver.name}}</h2>
+    <div class="row">
+        <div class="col-md-3">Upcoming trips: {{driver.numberOfUpcomingTrips}}</div>
+        <div class="col-md-3">Total trips: {{driver.numberOfTotalTrips}}</div>
+        <div class="col-md-3">
+            <input type="checkbox" ng-model="mine"/> Only mine trips <input type="checkbox" ng-model="driver"/> Only driver trips
+        </div>
+        <div class="col-md-3">
+            <select ng-model="sort" ng-init="sort='id'">
+                <option value="id">None</option>
+                <option value="from">From</option>
+                <option value="to">To</option>
+                <option value="departureTime">Departure Time</option>
+            </select>
+        </div>
+
+        <table class="table table-striped text-center">
+            <tr>
+                <th>Driver</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure time</th>
+            </tr>
+            <tr ng-repeat="trip in driver.trips | orderBy: sort ">
+                <td><a href="#">{{trip.driverName}}</a></td>
+                <td>{{trip.from}}</td>
+                <td>{{trip.to}}</td>
+                <td><a href="#">{{trip.departureDate}}</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
